@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send SMS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4">Send SMS via AWS SES</h2>
+        <form action="/send_sms" method="post">
+            <div class="form-group">
+                <label for="phone_number">Phone Number (including country code):</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="+11234567890" required>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="sender_id">Sender ID:</label>
+                <select class="form-control" id="sender_id" name="sender_id" required>
+                    <option value="SERVERADMIN">SERVERADMIN</option>
+                    <option value="SERVERALERT">SERVERALERT</option>
+                </select>
+            </div>
+
+            <div class="form-group" id="origination_number_div" style="display: none;">
+                <label for="origination_number">Origination Number:</label>
+                <input type="text" class="form-control" id="origination_number" name="origination_number" placeholder="Enter Origination Number">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Send SMS</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap and jQuery JS for interactivity -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById("phone_number").addEventListener("input", function() {
+            const phoneNumber = this.value;
+            const originationDiv = document.getElementById("origination_number_div");
+            if (phoneNumber.startsWith("+1")) {
+                originationDiv.style.display = "block";
+            } else {
+                originationDiv.style.display = "none";
+            }
+        });
+    </script>
+</body>
+</html>
