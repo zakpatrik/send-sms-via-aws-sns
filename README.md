@@ -29,7 +29,7 @@ First, clone this repository to your local environment:
 
 ```bash
 git clone https://github.com/zakpatrik/send-sms-via-aws-sns.git
-cd send-sms-via-ses
+cd send-sms-via-aws-sns
 ```
 
 ### 2. Environment Configuration
