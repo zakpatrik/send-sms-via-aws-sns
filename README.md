@@ -81,6 +81,13 @@ docker-compose up --build
 
 The application will be available at `http://localhost:5000`.
 
+## Logging
+
+application logs are stored in sms_log.txt file
+
+The log format is:
+```2024-10-16 08:34:19,298 - Phone: +420123456789, Message: 'test 2', Sender ID: my-id```
+
 ## Usage
 
 1. Open your web browser and navigate to `http://localhost:5000`.
